@@ -9,21 +9,65 @@ function App(){
         {id:3,text:"Comment three"},
     ]
 
+    const loading=false;
+    const showComments=true;
+
+    if(loading)return<h1>Loading...</h1>;
+
+    const commentBlock=(
+        <div>
+            <h3>Comments {comments.length}</h3>
+            <ul>
+                {
+                    comments.map((comment,index)=>(
+                        <li key={index}>{comment.text}</li>
+                    ))
+                }
+            </ul>
+        </div>
+    );
+
     return (
        <div className="container">
             <h1>{title.toLocaleUpperCase()}</h1>
             <p>{body}</p>
             {5+5}
-            <div>
-                <h3>Comments {comments.length}</h3>
-                <ul>
-                    {
-                        comments.map((comment,index)=>(
-                            <li key={index}>{comment.text}</li>
-                        ))
-                    }
-                </ul>
-            </div>
+
+            {showComments ? 
+            (
+                <div>
+                    <h3>Comments {comments.length}</h3>
+                    <ul>
+                        {
+                            comments.map((comment,index)=>(
+                                <li key={index}>{comment.text}</li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            )
+            : (
+                "no or null" 
+            )}
+
+            {showComments &&
+            (
+                <div>
+                    <h3>Comments {comments.length}</h3>
+                    <ul>
+                        {
+                            comments.map((comment,index)=>(
+                                <li key={index}>{comment.text}</li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            )
+            }
+
+            {showComments && commentBlock}
+
+            
        </div> 
     );
 }
