@@ -11,6 +11,7 @@ import FeedbackForm from "./component/FeedbackForm";
 import AboutPage from "./pages/AboutPage";
 import AboutIconLink from "./component/AboutIconLink";
 import Card from "./component/shared/Card";
+import Post from "./component/Post";
 
 function App(){
     const [feedback,setFeedback]=useState(FeedbackData);
@@ -42,17 +43,18 @@ function App(){
                     }></Route>
                     
                     <Route path="/about" element={<AboutPage/>}/>
+                    <Route path="/post/:id/:name" element={<Post/>}/>
 
                 </Routes>
 
-                <Card>
+                {/* <Card>
                     <NavLink to="/" activeClassName="active">
                         Home
                     </NavLink>
                     <NavLink to="/about" activeClassName="active">
                         About
                     </NavLink>
-                </Card>
+                </Card> */}
                 
             </div>
         </>
