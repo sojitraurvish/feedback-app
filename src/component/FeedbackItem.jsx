@@ -1,28 +1,19 @@
-import { useState } from "react";
+import PropTypes from "prop-types"
+import Card from "./shared/Card";
 
-const FeedbackItem=()=>{
-    const [rating,setRating]=useState(()=>7);    
-    const [text,setText]=useState(()=>"This is an example of Feedback item.");
-   
-    const handleClick=()=>{
-        // setRating(rating+1);
-        // setRating(rating+1);
-        setRating((prev)=>{
-            return 1 + prev;
-        });
-        setRating((prev)=>{
-            return 1 + prev;
-        });
-    }
+const FeedbackItem=({item})=>{
     return (
-        <div className="card">
-            <div className="num-display">{rating}</div>
+        <Card reverse={false}>
+            <div className="num-display">{item.rating}</div>
             <div className="text-display">
-                {text}
+                {item.text}
             </div>
-            <div onClick={handleClick}>Click</div>
-        </div>
+        </Card>
     );
+}
+
+FeedbackItem.propTypes={
+    item:PropTypes.object.isRequired
 }
 
 export default FeedbackItem
