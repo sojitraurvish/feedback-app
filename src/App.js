@@ -1,4 +1,4 @@
-import {v4 as uuidv4} from "uuid";
+
 import {Routes,Route,NavLink} from "react-router-dom"; 
 
 import { useState } from "react";
@@ -14,19 +14,7 @@ import Card from "./component/shared/Card";
 import Post from "./component/Post";
 
 function App(){
-    const [feedback,setFeedback]=useState(FeedbackData);
     
-    const deleteFeedback=(id)=>{
-        // console.log("App",id);
-        if(window.confirm("Are you sure you want to delete?")){
-            setFeedback(feedback.filter((item)=>item.id!==id))
-        }
-    }
-
-    const addFeedback=(newFeedBack)=>{
-        newFeedBack.id=uuidv4();
-        setFeedback([newFeedBack,...feedback]);
-    }
 
     return (
         <>
@@ -35,16 +23,16 @@ function App(){
                 <Routes>
                     <Route exact path="/" element={
                         <>
-                            <FeedbackForm handleAdd={addFeedback}/>
-                            <FeedbackStates feedback={feedback}/>
-                            <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
+                            <FeedbackForm />
+                            <FeedbackStates/>
+                            <FeedbackList/>
                             <AboutIconLink/>
                         </>
                     }></Route>
                     
                     <Route path="/about" element={<AboutPage/>}/>
                     {/* <Route path="/post/:id/:name" element={<Post/>}/> */}
-                    <Route path="/post/:id/:name/*" element={<Post/>}/>
+                    {/* <Route path="/post/:id/:name/*" element={<Post/>}/> */}
 
                 </Routes>
 
